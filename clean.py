@@ -57,7 +57,7 @@ def text_cleaner(text_data):
 def clean():
     for i in range(0, len(data)):
         if((i+1) % 1000 == 0):
-            print("Tweets %d of %d has been processed" % (i+1, len(data)))
+            print("Comments %d of %d has been processed" % (i+1, len(data)))
 
         clean_text.append(text_cleaner(data['text'][i]))
 
