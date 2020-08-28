@@ -2,7 +2,7 @@ import json
 import pandas as pd
 pd.options.display.width = 0
 
-with open("data.json") as fp:
+with open("./data/data.json") as fp:
     data = json.load(fp)
 
 # popularity_score : a popularity score for this comment (based on the number of upvotes) (type: float)

@@ -79,4 +79,4 @@ data_clean['children'] = data_clean['children'].astype(int)
 
 # Export to csv
 
-data_clean.to_csv('./clean_data.csv', encoding='utf-8')
+data_clean.to_csv('./data/clean_data.csv', encoding='utf-8')
