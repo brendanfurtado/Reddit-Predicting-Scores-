@@ -78,5 +78,4 @@ data_clean['children'] = data_clean['children'].astype(int)
 
 
 # Export to JSON
-
-data_clean.to_json('./data/clean_data.json', orient='records', lines=True)
+data_clean.to_json('./data/clean_data.json', orient='records')

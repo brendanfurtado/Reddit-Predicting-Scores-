@@ -22,3 +22,13 @@ class data_analysis:
         self.data = data
         self.X = []
         self.y = []
+
+    def initialize(self, data):
+
+        self.X = []
+        self.y = []
+
+        for column in data:
+            self.X.append(
+                [column['children'], column['controversiality'], column['is_root']])
+            self.y.append(column['popularity_score'])
