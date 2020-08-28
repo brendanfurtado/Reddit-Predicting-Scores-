@@ -1,11 +1,7 @@
 import json
-import pandas as pd
-import numpy as np
 import math
 import os.path as op
-
-
-pd.options.display.width = 0
+from collections import Counter
 
 
 class feature_extraction:
@@ -22,16 +18,6 @@ class feature_extraction:
         self.X = []
         self.y = []
 
-    def initialize(self, data):
-
-        self.X = []
-        self.y = []
-
-        for point in data:
-            self.X.append(
-                [point['children'], point['controversiality'], point['is_root']])
-            self.y.append(point['popularity_score'])
-
     # More preprocessing and setting up the data
     def process_text(self, data):
 
@@ -44,3 +30,13 @@ class feature_extraction:
 
     def data_split(self, data):
         return data[:10000], data[10000:11000], data[11000:]
+
+    def calc_common_words(self, data):
+        word_count = Counter()
+        for point in data:
+            word_count += Counter(point['text_split'])
+
+        # Write the top 160 most common words to a file
+        top_words = [w[0] for w in word_count.most_common(160) if w[0]]
+        with open("data/common_words.txt", 'w+') as f:
+            f.writelines(f'{word}\n' for word in top_words)
