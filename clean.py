@@ -72,6 +72,11 @@ data_clean['controversiality'] = data.controversiality
 data_clean['children'] = data.children
 data_clean['popularity_score'] = data.popularity_score
 
+# Encode is_root & children columns
+data_clean['is_root'] = data_clean['is_root'].astype(int)
+data_clean['children'] = data_clean['children'].astype(int)
+
+
 # Export to csv
 
 data_clean.to_csv('./clean_data.csv', encoding='utf-8')
