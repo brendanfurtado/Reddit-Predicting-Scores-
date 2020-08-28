@@ -8,16 +8,15 @@ import os.path as op
 pd.options.display.width = 0
 
 
-class data_analysis:
+class feature_extraction:
 
     DATA_DIR = op.abspath(op.join(__file__, op.pardir, op.pardir, 'data'))
-    DATA_PATH = op.join(DATA_DIR, 'clean_data.csv')
+    DATA_PATH = op.join(DATA_DIR, 'clean_data.json')
 
     def __init__(self):
 
         with open(self.DATA_PATH) as file:
             data = json.load(file)
-            print(data)
 
         self.data = data
         self.X = []
@@ -28,7 +27,20 @@ class data_analysis:
         self.X = []
         self.y = []
 
-        for column in data:
+        for point in data:
             self.X.append(
-                [column['children'], column['controversiality'], column['is_root']])
-            self.y.append(column['popularity_score'])
+                [point['children'], point['controversiality'], point['is_root']])
+            self.y.append(point['popularity_score'])
+
+    # More preprocessing and setting up the data
+    def process_text(self, data):
+
+        # split the text data
+        for point in data:
+            point['text_split'] = point['text'].split()
+
+        # split the data into training, validation and testing sets
+        return self.data_split(data)
+
+    def data_split(self, data):
+        return data[:10000], data[10000:11000], data[11000:]
