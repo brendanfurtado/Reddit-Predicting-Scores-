@@ -65,3 +65,13 @@ def clean():
 clean()
 
 data_clean = pd.DataFrame(clean_text, columns=['text'])
+
+# combine data_clean & original dataset
+data_clean['is_root'] = data.is_root
+data_clean['controversiality'] = data.controversiality
+data_clean['children'] = data.children
+data_clean['popularity_score'] = data.popularity_score
+
+# Export to csv
+
+data_clean.to_csv('./clean_data.csv', encoding='utf-8')
