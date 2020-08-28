@@ -77,6 +77,6 @@ data_clean['is_root'] = data_clean['is_root'].astype(int)
 data_clean['children'] = data_clean['children'].astype(int)
 
 
-# Export to csv
+# Export to JSON
 
-data_clean.to_csv('./data/clean_data.csv', encoding='utf-8')
+data_clean.to_json('./data/clean_data.json', orient='records', lines=True)
