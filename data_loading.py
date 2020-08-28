@@ -15,4 +15,3 @@ with open("data.json") as fp:
 class data_loading:
 
     dataframe = pd.DataFrame.from_dict(data, orient='columns')
-    print(dataframe)
