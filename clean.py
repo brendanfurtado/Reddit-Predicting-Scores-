@@ -1,18 +1,23 @@
-from data_loading import *
-import re
-from bs4 import BeautifulSoup
 from nltk.tokenize import WordPunctTokenizer
+from bs4 import BeautifulSoup
+import re
+import json
+import pandas as pd
+pd.options.display.width = 0
 
-tokenizer = WordPunctTokenizer()
-df = data_loading.dataframe
-data = df.copy()
+
+###### Loading the data ######
+with open("./data/data.json") as fp:
+    data = json.load(fp)
+
+dataframe = pd.DataFrame.from_dict(data, orient='columns')
+data = dataframe.copy()
+
 clean_text = []  # array to store text after it has been cleaned
+tokenizer = WordPunctTokenizer()
 
-# checking for null values
-# (data.isnull().values.any()) # however, there are no null values
 
 ###### Cleaning the data ######
-
 
 # Setting up pattern matching text we want to get rid of
 pattern1 = r'https?://[^ ]+'
