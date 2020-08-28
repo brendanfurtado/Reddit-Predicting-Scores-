@@ -8,8 +8,8 @@ df = data_loading.dataframe
 data = df.copy()
 clean_text = []  # array to store text after it has been cleaned
 
-# checking for null values, there are none
-(data.isnull().values.any())
+# checking for null values
+# (data.isnull().values.any()) # however, there are no null values
 
 ###### Cleaning the data ######
 
@@ -39,7 +39,7 @@ def text_cleaner(text_data):
     except:
         bom_removed = getSoup
 
-        # Remove URL links, special characters and numbers
+        # Remove URL links, special characters and numbers. Lower case all words too
 
         stripped = re.sub(pattern1, '', bom_removed)
         stripped = re.sub(www_pattern, '', stripped)
@@ -62,7 +62,7 @@ def clean():
         clean_text.append(text_cleaner(data['text'][i]))
 
 
-clean()
+clean()  # call clean on the dataset
 
 data_clean = pd.DataFrame(clean_text, columns=['text'])
 
