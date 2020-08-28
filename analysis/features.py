@@ -44,11 +44,12 @@ class feature_extraction:
 
     # Calculate the count of most common words per data point (in this case the data points are comments, the text)
 
-    def calc_words_data(self, data):
+    def calc_freq_words(self, data):
         x_counts = []
 
         with open('data/common_words.txt', 'r+') as file:
             common_words = file.read().splitlines()[:160]
+
         if(common_words):
             for point in data:
                 # get the comment from the data
