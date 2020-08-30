@@ -9,4 +9,6 @@ dataObj.calc_common_words(dataObj.data)
 
 # calculate the frequency if common words occurrences per comment
 # now each comment has the frequency of all the most common words in the corpus
-common_words = dataObj.calc_freq_words(dataObj.data)
+common_words = dataObj.calc_freq_words(
+    dataObj.data)  # common_words is an array
+print("done")

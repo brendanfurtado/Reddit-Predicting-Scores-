@@ -7,8 +7,8 @@ pd.options.display.width = 0
 
 
 ###### Loading the data ######
-with open("./data/data.json") as fp:
-    data = json.load(fp)
+with open("./data/data.json") as file:
+    data = json.load(file)
 
 dataframe = pd.DataFrame.from_dict(data, orient='columns')
 data = dataframe.copy()

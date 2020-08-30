@@ -5,12 +5,9 @@ from collections import Counter
 
 class feature_extraction:
 
-    DATA_DIR = op.abspath(op.join(__file__, op.pardir, op.pardir, 'data'))
-    DATA_PATH = op.join(DATA_DIR, 'clean_data.json')
-
     def __init__(self):
 
-        with open(self.DATA_PATH) as file:
+        with open("data/clean_data.json") as file:
             data = json.load(file)
 
         self.data = data
@@ -51,10 +48,10 @@ class feature_extraction:
 
         if(common_words):
             for point in data:
-                # get the comment from the data
+                # Get the frequency of word occurrences within the comments
                 comment = Counter(point['text_split'])
-                # append to word frequency array
+                print(comment)
+                # if a word in the common_words list appears in the comment, append it
                 x_counts.append([comment.get(word, 0)
                                  for word in common_words])
-
         return x_counts
